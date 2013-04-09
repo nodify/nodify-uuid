@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  Copyright (c) 2013 Smithee, Spelvin, Agnew & Plinge, Inc. All Rights Reserved
+  See https://raw.github.com/nodify/nodify-logger/master/LICENSE for license.
+-->
+<html>
+  <head>
+    <title>info.meadhbh.org</title>
+    <script type="text/javascript" src="log.js"></script>
+    <script type="text/javascript" src="nodify-uuid.js"></script>
+    <script type="text/javascript">
+var Log;
+function _onload() {
+  Log = new _$Log( "log" );
+
+  Log.post( "here's a null   UUID: " + _$UUID.nil.toString() );
+  Log.post( "here's a DNS NS UUID: " + _$UUID.NS_DNS.toString() );
+  Log.post( "here's a URL NS UUID: " + _$UUID.NS_URL.toString() );
+  Log.post( "here's a OID NS UUID: " + _$UUID.NS_OID.toString() );
+  Log.post( "here's a X500NS UUID: " + _$UUID.NS_X500.toString() );
+  _random_uuid();
+
+  function _random_uuid() {
+    _$UUID.generate( _$UUID.V_RANDOM, function ( err, uuid ) {
+      if( err ) {
+        Log.post( err.toString() );
+      } else {
+        Log.post( "here's a random UUID: " + uuid.toString() );
+      }
+      _md5_uuid();
+    } );
+  }
+  
+  function _md5_uuid( ) {
+    _$UUID.generate( _$UUID.V_MD5, _$UUID.NS_DNS, "www.widgets.com", function( err, uuid ) {
+       Log.post( "here's a md5    UUID: " + (err?err:uuid).toString() );
+      _sha1_uuid()
+    } );
+  }
+
+  function _sha1_uuid( ) {
+    _$UUID.generate( _$UUID.V_SHA1, _$UUID.NS_DNS, "www.widgets.com", function( err, uuid ) {
+      Log.post( "here's a sha1   UUID: " + (err?err:uuid).toString() );
+    } );
+  }
+}
+    </script>
+  </head>
+  <body onload="_onload();">
+<!-- bonus points if you recognize 64x16 as the resolution for the TRS-80 -->
+    <textarea id="log" cols=64 rows=16></textarea>
+  </body>
+</html>

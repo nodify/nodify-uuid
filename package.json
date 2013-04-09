@@ -1,0 +1,32 @@
+{
+  "name": "nodify-uuid",
+  "description": "RFC4122 Compliant UUIDs for node & HTML5 browsers w/ real entropy & hash functions",
+  "maintainers": [
+    {
+      "name": "Meadhbh Hamrick",
+      "email": "meadhbh@smithee.us",
+      "web": "http://nodify.us/"
+    },
+    {
+      "name": "Meadhbh Hamrick",
+      "email": "OhMeadhbh@gmail.com",
+      "web": "http://meadhbh.org/"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nodify/nodify-uuid/raw/master/LICENSE"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/nodify/nodify-uuid"
+    }
+  ],
+  "version": "0.0.1",
+  "main": "./nodify-uuid.js",
+  "directories": [ "test", "examples" ],
+  "keywords": [ "uuid" ]
+}
